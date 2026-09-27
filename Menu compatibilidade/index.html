@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compatibilidade de Dispositivos | DSchurros</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23FF6B35'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Poppins,sans-serif' font-size='32' fill='%23ffffff' font-weight='800'%3ED%3C/text%3E%3C/svg%3E">
+    <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23FF6B35'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Poppins,sans-serif' font-size='32' fill='%23ffffff' font-weight='800'%3ED%3C/text%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #FFA500;
+            --accent-color: #FFE5B4;
+            --light-color: #FFF9F0;
+            --dark-color: #2C1810;
+            --text-color: #333333;
+            --text-light: #777777;
+            --bg-color: #FFFFFF;
+            --card-color: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            --border-radius: 16px;
+        }
+
+        .dark-mode {
+            --primary-color: #FF8C42;
+            --secondary-color: #FFB74D;
+            --accent-color: #5D4037;
+            --light-color: #121212;
+            --dark-color: #FFE5B4;
+            --text-color: #F5F5F5;
+            --text-light: #AAAAAA;
+            --bg-color: #1A1A1A;
+            --card-color: #242424;
+            --shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 4px 20px var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .brand-mark {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-weight: 900;
+        }
+
+        .logo-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+
+        .logo-icon {
+            color: var(--primary-color);
+            font-size: 28px;
+            transition: var(--transition);
+            min-width: 48px;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon i {
+            display: block;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .theme-toggle,
+        .btn {
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle {
+            background: var(--accent-color);
+            font-size: 22px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: var(--dark-color);
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: rotate(15deg);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 999px;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            text-decoration: none;
+        }
+
+        .btn.secondary {
+            background: var(--accent-color);
+            color: var(--dark-color);
+        }
+
+        .page-shell {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 130px 0 70px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.25fr);
+            gap: 34px;
+            align-items: center;
+            margin-bottom: 36px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            min-height: 34px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            color: #fed7aa;
+            background: rgba(255, 107, 53, 0.12);
+            border: 1px solid rgba(255, 107, 53, 0.24);
+            font-size: 0.82rem;
+            font-weight: 900;
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.05;
+            margin-bottom: 20px;
+            overflow-wrap: break-word;
+            max-width: 48ch;
+        }
+
+        .hero-title span {
+            color: var(--primary-color);
+        }
+
+        .hero-desc {
+            color: var(--text-light);
+            font-size: clamp(1rem, 2vw, 1.18rem);
+            line-height: 1.75;
+            max-width: 58ch;
+            margin-bottom: 18px;
+        }
+
+        .hero-subtitle {
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .compat-image {
+            border-radius: 28px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.08);
+            min-height: 280px;
+        }
+
+        .compat-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+            object-fit: cover;
+        }
+
+        .image-fallback {
+            min-height: 320px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .main-container {
+            background: #ffffff;
+            border-radius: 28px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: clamp(22px, 4vw, 40px);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(14px);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 14px;
+        }
+
+        .section-copy {
+            color: var(--text-color);
+            line-height: 1.75;
+            margin-bottom: 26px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 0.86fr);
+            gap: 24px;
+            margin-top: 8px;
+        }
+
+        .info-card,
+        .not-compatible-section {
+            border-radius: 24px;
+            padding: clamp(20px, 3vw, 30px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: var(--card-color);
+            color: var(--text-color);
+        }
+
+        .not-compatible-section {
+            background: rgba(248, 113, 113, 0.12);
+            border-color: rgba(248, 113, 113, 0.25);
+        }
+
+        .card-heading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.18rem;
+            margin-bottom: 14px;
+            color: var(--text-color);
+        }
+
+        .status-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 999px;
+            background: #10B981;
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.12);
+            flex: 0 0 auto;
+        }
+
+        .status-dot.red {
+            background: #f87171;
+            box-shadow: 0 0 0 6px rgba(248, 113, 113, 0.14);
+        }
+
+        .brand-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .cards-panel {
+            background: var(--card-color);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+            margin-top: 24px;
+        }
+
+        .dark-mode .cards-panel {
+            background: #292929;
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .brand-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 50px;
+            padding: 12px 18px;
+            border-radius: 16px;
+            background: var(--card-color);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+            color: var(--text-color);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .brand-pill:hover {
+            transform: translateY(-3px);
+            border-color: rgba(37, 99, 235, 0.4);
+            box-shadow: 0 14px 30px rgba(37, 99, 235, 0.08);
+        }
+
+        .brand-icon {
+            width: 34px;
+            height: 34px;
+            display: inline-grid;
+            place-items: center;
+            font-size: 1rem;
+            border-radius: 12px;
+            color: white;
+        }
+
+        .brand-pill.windows .brand-icon { background: #00A4EF; }
+        .brand-pill.apple .brand-icon { background: #000000; }
+        .brand-pill.android .brand-icon { background: #3DDC84; }
+        .brand-pill.samsung .brand-icon { background: #1428A0; }
+
+        .unsupported-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 20px;
+        }
+
+        .unsupported-list span {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(248, 113, 113, 0.12);
+            color: #b91c1c;
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .footer-note {
+            margin-top: 26px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-icons {
+            display: flex;
+            gap: 10px;
+            color: #2563EB;
+            font-weight: 900;
+        }
+
+        @media (max-width: 1024px) {
+            .header-container { padding: 22px 0; }
+            .logo-text { font-size: 28px; }
+        }
+
+        @media (max-width: 768px) {
+            .header-container { padding: 16px 0; }
+            .logo-text { font-size: 20px; }
+        }
+
+        @media (max-width: 840px) {
+            .header-container {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 16px 0;
+            }
+            .hero,
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-shell {
+                padding-top: 180px;
+            }
+            .compat-image,
+            .compat-image img {
+                min-height: 220px;
+            }
+            .footer-note {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-caption {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="../index teste.html" class="logo">
+                <span class="logo-icon" aria-hidden="true"><i class="fas fa-bowl-food"></i></span>
+                <div class="logo-text">D<span>schurros</span></div>
+            </a>
+            <div class="header-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Alternar modo escuro/claro">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="../index teste.html" class="btn secondary">Voltar ao site</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-shell" id="home">
+        <section class="hero" id="compatibilidade" aria-labelledby="page-title">
+            <div class="hero-copy">
+                <span class="eyebrow">Compatibilidade</span>
+                <h1 class="hero-title" id="page-title">Compatível com tecnologia baseada em Chromium</h1>
+                <p class="hero-desc">Compatível com qualquer navegador Chromium, reconhece o ícone do perfil/site no cabeçalho e funciona em modo claro ou escuro.</p>
+            </div>
+
+            <div class="compat-image">
+                <img src="compatibilidade.png" alt="Site DSchurros exibido em celular, tablet, computador e relógios inteligentes" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="image-fallback">Imagem compatibilidade.png não encontrada.</div>
+            </div>
+        </section>
+
+        <section class="main-container" id="suportados" aria-labelledby="supported-title">
+            <h2 class="section-title" id="supported-title">Compatível com navegadores modernos</h2>
+            <p class="section-copy">Funciona com qualquer tecnologia que use Chromium: Chrome, Edge, Opera e Samsung Internet.</p>
+            <p class="section-copy">O layout reconhece o ícone de perfil/site no cabeçalho para identificação visual mais clara.</p>
+            <div class="cards-panel">
+                <div class="content-grid">
+                    <div class="info-card">
+                    <h3 class="card-heading"><span class="status-dot"></span>Compatível com:</h3>
+                    <p class="section-copy">Funciona perfeitamente em celulares, tablets, computadores e também em <strong>smartwatches</strong> modernos.</p>
+                    <div class="brand-grid" aria-label="Marcas e sistemas compatíveis">
+                        <div class="brand-pill windows"><span class="brand-icon"><i class="fab fa-windows"></i></span>Windows</div>
+                        <div class="brand-pill apple"><span class="brand-icon"><i class="fab fa-apple"></i></span>Apple</div>
+                        <div class="brand-pill android"><span class="brand-icon"><i class="fab fa-android"></i></span>Android</div>
+                        <div class="brand-pill samsung"><span class="brand-icon"><i class="fas fa-mobile-alt"></i></span>Samsung</div>
+                    </div>
+                </div>
+                <div class="not-compatible-section" id="nao-compativel">
+                    <h3 class="card-heading"><span class="status-dot red"></span>Não Compatível</h3>
+                    <p class="section-copy">Smart TVs podem apresentar limitações de navegação e não são totalmente suportadas.</p>
+                    <div class="unsupported-list" aria-label="Sistemas de TV com suporte limitado">
+                        <span>LG WebOS</span>
+                        <span>Samsung Tizen</span>
+                        <span>Android TV</span>
+                        <span>Apple TV</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="footer-note">
+                <p>Compatível com navegadores modernos: Chrome, Safari e Edge.</p>
+                <div class="footer-icons" aria-label="Site seguro e rápido">
+                    <span>Seguro</span>
+                    <span>Rápido</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const bodyEl = document.body;
+        const storedTheme = localStorage.getItem('dschurros-theme');
+        if (storedTheme === 'dark') {
+            bodyEl.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        themeToggle.addEventListener('click', () => {
+            const isDark = bodyEl.classList.toggle('dark-mode');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('dschurros-theme', isDark ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>
