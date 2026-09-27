@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark-mode">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DCL6F3M8WD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DCL6F3M8WD');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso e Política de Privacidade | D'Schurros</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+    <style>
+        /* Variáveis CSS do modo escuro (igual ao seu site) */
+        :root {
+            --primary-color: #F27B35;
+            --primary-color-rgb: 242, 123, 53;
+            --secondary-color: #FFB74D;
+            --accent-color: #4D260F; /* Chocolate amargo */
+            --light-color: #1F0D04; /* Fundo cacau escuro */
+            --dark-color: #FCECD6;
+            --text-color: #FCECD6;
+            --text-light: #BFA595;
+            --bg-color: #170A03; /* Cacao Gourmet background */
+            --bg-color-rgb: 23, 10, 3;
+            --card-color: #261206; /* Chocolate nos cards */
+            --shadow: rgba(0, 0, 0, 0.45);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* logo image sizing */
+        .logo-img {
+            height: 80px;
+            width: 80px;
+            max-width: 80px;
+            max-height: 80px;
+            display: block;
+            border-radius: 50%;
+            overflow: hidden;
+            object-fit: cover;
+            border: 3px solid rgba(0,0,0,0.06);
+            background-color: #fff;
+        }
+
+        .footer-logo-img {
+            height: 48px;
+            width: 48px;
+            max-width: 48px;
+            max-height: 48px;
+            display: block;
+            border-radius: 50%;
+            overflow: hidden;
+            object-fit: cover;
+            border: 2px solid rgba(0,0,0,0.04);
+            background-color: #fff;
+        }
+
+        @media (max-width: 1280px) {
+            .logo-img { height: 72px; width:72px; }
+            .footer-logo-img { height: 44px; width:44px; }
+        }
+
+        @media (max-width: 1024px) {
+            .logo-img { height: 64px; width:64px; }
+            .footer-logo-img { height: 42px; width:42px; }
+        }
+
+        @media (max-width: 768px) {
+            .logo-img { height: 56px; width:56px; }
+            .footer-logo-img { height: 36px; width:36px; }
+        }
+
+        /* Header - igual ao seu site */
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 4px 20px var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background-color: rgba(26, 26, 26, 0.95);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+
+        @media (max-width: 1024px) {
+            .header-container { padding: 22px 0; }
+        }
+
+        @media (max-width: 768px) {
+            .header-container { padding: 16px 0; }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-icon {
+            color: var(--primary-color);
+            font-size: 32px;
+            transition: var(--transition);
+            min-width: 40px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            line-height: 1;
+            margin-left: 4px;
+        }
+
+        @media (max-width: 1024px) {
+            .logo-text { font-size: 28px; }
+        }
+
+        @media (max-width: 768px) {
+            .logo-text { font-size: 20px; }
+        }
+
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .back-btn:hover::before {
+            left: 100%;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Conteúdo principal */
+        .main-content {
+            padding: 150px 0 80px;
+            background-color: var(--bg-color);
+        }
+
+        .terms-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid var(--accent-color);
+            position: relative;
+        }
+
+        .terms-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .terms-header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .date-info {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .terms-disclaimer {
+            background-color: var(--accent-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        /* Seções dos termos */
+        .terms-section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 25px var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 140, 66, 0.1);
+        }
+
+        .terms-section:hover {
+            box-shadow: 0 12px 35px var(--shadow);
+            border-color: rgba(255, 140, 66, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .section-content {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background-color: rgba(255, 140, 66, 0.08);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background-color: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #FFC107;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+            color: var(--text-color);
+        }
+
+        ul {
+            margin: 20px 0 20px 30px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--text-light);
+            position: relative;
+        }
+
+        li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        strong {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .contact-info-box {
+            background: linear-gradient(45deg, var(--accent-color), rgba(93, 64, 55, 0.8));
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+            border: 1px solid var(--primary-color);
+        }
+
+        .contact-info-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .contact-info-box p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .contact-info-box a {
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .contact-info-box a:hover {
+            color: var(--secondary-color);
+            border-bottom: 1px solid var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2D2D2D;
+            color: var(--light-color);
+            padding: 60px 0 30px;
+            transition: var(--transition);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 25px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-logo span {
+            color: var(--secondary-color);
+        }
+
+        .footer-about p {
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 992px) {
+            .terms-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .terms-section {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 130px 0 60px;
+            }
+            
+            .terms-header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .terms-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .terms-section {
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection color */
+        ::selection {
+            background-color: rgba(255, 140, 66, 0.3);
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="../assets/images/logo.png" alt="D'Schurros" class="logo-img">
+                <div class="logo-text">D<span>schurros</span></div>
+            </a>
+            
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Voltar ao Site
+            </a>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="container">
+            <div class="terms-header">
+                <h1>Termos de Uso e Política de Privacidade</h1>
+                <div class="date-info">Data de vigência: <span id="currentDate"></span></div>
+                <div class="terms-disclaimer">
+                    <p><strong>Observação:</strong> Este site é apenas para informações de catálogo, novidades e divulgação dos produtos. Não realizamos vendas online, não coletamos dados de usuários e não utilizamos cookies de rastreamento.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="section-title">1. Sobre Este Site</h2>
+                <div class="section-content">
+                    <p>Este site é uma plataforma informativa dedicada exclusivamente à divulgação de catálogo de produtos, informações sobre novidades e promoções da <strong>D'Schurros - Churros</strong>. <strong>Não realizamos</strong> qualquer tipo de:</p>
+                    <ul>
+                        <li>Comércio eletrônico ou vendas diretas</li>
+                        <li>Transações financeiras online</li>
+                        <li>Cadastro de usuários ou criação de contas</li>
+                        <li>Integração com APIs de pagamento ou sistemas de venda</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="section-title">2. Coleta e Uso de Dados</h2>
+                <div class="section-content">
+                    <div class="highlight-box">
+                        <h3>2.1. O Que NÃO Coletamos:</h3>
+                        <ul>
+                            <li><strong>Não coletamos</strong> informações pessoais dos visitantes (nome, e-mail, telefone, endereço, etc.)</li>
+                            <li><strong>Não utilizamos</strong> cookies de rastreamento, análise de comportamento ou tecnologias similares</li>
+                            <li><strong>Não possuímos</strong> formulários de cadastro, áreas de login ou mecanismos de coleta de dados</li>
+                            <li><strong>Não integramos</strong> APIs de terceiros que possam coletar informações</li>
+                            <li><strong>Não armazenamos</strong> dados de navegação ou preferências dos usuários</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>2.2. Dados Técnicos:</h3>
+                    <p>O servidor onde este site está hospedado pode registrar automaticamente informações técnicas mínimas padrão, como:</p>
+                    <ul>
+                        <li>Endereço IP (anonimizado para estatísticas)</li>
+                        <li>Tipo de navegador e versão</li>
+                        <li>Data e hora de acesso</li>
+                        <li>Páginas visitadas (para estatísticas de tráfego anônimas)</li>
+                    </ul>
+                    <p>Esses dados são utilizados exclusivamente para fins de segurança, manutenção do site e estatísticas de tráfego anônimas, e não são associados a identidades pessoais.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="section-title">3. JavaScript e Segurança</h2>
+                <div class="section-content">
+                    <p>Este site utiliza <strong>JavaScript</strong> padrão para seu funcionamento básico e interatividade. Alertamos que:</p>
+                    
+                    <div class="warning-box">
+                        <p><strong>Não nos responsabilizamos</strong> pelo uso indevido, manipulação ou interferência de terceiros no código JavaScript ou em qualquer parte do site.</p>
+                        <p>Recomendamos que os visitantes mantenham seus navegadores atualizados e utilizem ferramentas de segurança adequadas para uma navegação segura.</p>
+                    </div>
+                    
+                    <p>Todas as informações apresentadas neste site são fornecidas "como estão" e estão sujeitas a alterações sem aviso prévio.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="section-title">4. Finalidade do Site</h2>
+                <div class="section-content">
+                    <p>Este site tem como única e exclusiva finalidade:</p>
+                    <ul>
+                        <li>Divulgação do catálogo de produtos da D'Schurros</li>
+                        <li>Informações sobre novidades e lançamentos</li>
+                        <li>Comunicação de horários de funcionamento</li>
+                        <li>Disponibilização de canais de contato</li>
+                        <li>Divulgação de conteúdo relacionado aos produtos</li>
+                    </ul>
+                    <p><strong>Não realizamos</strong> vendas, pedidos online, reservas ou qualquer tipo de transação comercial através deste site.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="section-title">5. Direitos Autorais</h2>
+                <div class="section-content">
+                    <p>Todo o conteúdo apresentado neste site (imagens, textos, logotipos, layout) é de propriedade exclusiva da <strong>D'Schurros</strong> ou de seus licenciadores e é protegido por leis de propriedade intelectual.</p>
+                    <p>O conteúdo pode ser visualizado para uso pessoal e informativo, mas não pode ser copiado, reproduzido, distribuído ou utilizado para fins comerciais sem autorização prévia por escrito.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="section-title">6. Alterações nos Termos</h2>
+                <div class="section-content">
+                    <p>Podemos atualizar estes Termos de Uso e Política de Privacidade periodicamente. A data de vigência no topo deste documento será revisada em caso de alterações.</p>
+                    <p>O uso continuado do site após quaisquer modificações constitui aceitação dos novos termos. Recomendamos revisar esta página periodicamente para se manter informado sobre quaisquer alterações.</p>
+                </div>
+            </div>
+
+            <div class="contact-info-box">
+                <h3>Contato e Informações</h3>
+                <p>Para questões relacionadas a estes Termos de Uso e Política de Privacidade, ou para mais informações sobre nossos produtos:</p>
+                <p>Entre em contato através dos canais disponibilizados no <a href="index.html#contacts">site principal</a> ou via:</p>
+                <p><strong>Instagram:</strong> <a href="https://www.instagram.com/dschurros_?igsh=NnUxOGZ5aGluNzgz" target="_blank">@dschurros_</a></p>
+                <p><strong>E-mail:</strong> <a href="mailto:dschurros@gmail.com">dschurros@gmail.com</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo"><img src="../assets/images/logo.png" alt="D'Schurros" class="footer-logo-img"></a>
+                    <p>Churros. Desde 2022 divulgando nossos produtos.</p>
+                    <p><strong>Este site é apenas para informações de catálogo, novidades e divulgação dos produtos.</strong></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 DSchurros. Todos os direitos reservados.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">
+                
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Definir data atual
+        const now = new Date();
+        const options = { day: '2-digit', month: 'long', year: 'numeric' };
+        const formattedDate = now.toLocaleDateString('pt-BR', options);
+        
+        // Inserir a data no documento
+        document.getElementById('currentDate').textContent = formattedDate;
+        
+        // Botão voltar ao topo
+        window.addEventListener('scroll', function() {
+            const backBtn = document.querySelector('.back-btn');
+            if (window.scrollY > 300) {
+                backBtn.style.position = 'fixed';
+                backBtn.style.top = '80px';
+                backBtn.style.right = '20px';
+                backBtn.style.zIndex = '999';
+            } else {
+                backBtn.style.position = 'relative';
+                backBtn.style.top = 'auto';
+                backBtn.style.right = 'auto';
+            }
+        });
+        
+        // Suavizar links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Log de carregamento
+        console.log("Página de Termos de Uso e Política de Privacidade carregada.");
+        console.log("Este site não coleta dados dos usuários e não realiza vendas online.");
+    </script>
+</body>
+</html>

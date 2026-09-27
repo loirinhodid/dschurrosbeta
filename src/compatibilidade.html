@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compatibilidade de Dispositivos | DSchurros</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23FF6B35'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Poppins,sans-serif' font-size='32' fill='%23ffffff' font-weight='800'%3ED%3C/text%3E%3C/svg%3E">
+    <link rel="shortcut icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23FF6B35'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Poppins,sans-serif' font-size='32' fill='%23ffffff' font-weight='800'%3ED%3C/text%3E%3C/svg%3E">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #D65A19; /* Doce de Leite / Canela Gourmet */
+            --primary-color-rgb: 214, 90, 25;
+            --secondary-color: #E29B3E; /* Churro Dourado */
+            --accent-color: #FCECD6; /* Creme de Baunilha */
+            --light-color: #FFF9F2; /* Fundo de Leite Quente */
+            --dark-color: #381A08; /* Cacau / Chocolate Escuro */
+            --text-color: #2E1505; /* Texto principal em tom chocolate quente */
+            --text-light: #6C5547; /* Subtexto em tom canela suave */
+            --bg-color: #FFFFFF;
+            --bg-color-rgb: 255, 255, 255;
+            --card-color: #FFFFFF;
+            --shadow: rgba(56, 26, 8, 0.06); /* Sombra suave em tom cacau */
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 18px; /* Cantos levemente mais suaves */
+
+            /* Custom dark/light mode variables for borders, badges & panel elements */
+            --border-color: rgba(0, 0, 0, 0.08);
+            --cards-panel-bg: #FFFFFF;
+            --eyebrow-color: #D65A19;
+            --eyebrow-bg: rgba(var(--primary-color-rgb), 0.12);
+            --eyebrow-border: rgba(var(--primary-color-rgb), 0.24);
+            --unsupported-color: #b91c1c;
+            --unsupported-bg: rgba(248, 113, 113, 0.12);
+            --unsupported-border: rgba(248, 113, 113, 0.25);
+        }
+
+        .dark-mode {
+            --primary-color: #F27B35;
+            --primary-color-rgb: 242, 123, 53;
+            --secondary-color: #FFB74D;
+            --accent-color: #4D260F; /* Chocolate amargo */
+            --light-color: #1F0D04; /* Fundo cacau escuro */
+            --dark-color: #FCECD6;
+            --text-color: #FCECD6;
+            --text-light: #BFA595;
+            --bg-color: #170A03; /* Cacao Gourmet background */
+            --bg-color-rgb: 23, 10, 3;
+            --card-color: #261206; /* Chocolate nos cards */
+            --shadow: rgba(0, 0, 0, 0.45);
+
+            /* Dark mode overrides for borders, badges & panel elements */
+            --border-color: rgba(255, 255, 255, 0.08);
+            --cards-panel-bg: #261206;
+            --eyebrow-color: #FFB74D;
+            --eyebrow-bg: rgba(var(--primary-color-rgb), 0.15);
+            --eyebrow-border: rgba(var(--primary-color-rgb), 0.3);
+            --unsupported-color: #f87171;
+            --unsupported-bg: rgba(248, 113, 113, 0.2);
+            --unsupported-border: rgba(248, 113, 113, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 4px 20px var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        /* logo image sizing */
+        .logo-img {
+            height: 80px;
+            width: 80px;
+            max-width: 80px;
+            max-height: 80px;
+            display: block;
+            border-radius: 50%;
+            overflow: hidden;
+            object-fit: cover;
+            border: 3px solid var(--border-color);
+            background-color: var(--card-color);
+            transition: var(--transition);
+        }
+
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 60px;
+                width: 60px;
+                max-width: 60px;
+                max-height: 60px;
+            }
+        }
+
+        .logo-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .theme-toggle,
+        .btn {
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle {
+            background: var(--accent-color);
+            font-size: 22px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: var(--dark-color);
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: rotate(15deg);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 999px;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            text-decoration: none;
+        }
+
+        .btn.secondary {
+            background: var(--accent-color);
+            color: var(--dark-color);
+        }
+
+        .page-shell {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 130px 0 70px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.25fr);
+            gap: 34px;
+            align-items: center;
+            margin-bottom: 36px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            min-height: 34px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            color: var(--eyebrow-color);
+            background: var(--eyebrow-bg);
+            border: 1px solid var(--eyebrow-border);
+            font-size: 0.82rem;
+            font-weight: 900;
+            margin-bottom: 18px;
+            transition: var(--transition);
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.05;
+            margin-bottom: 20px;
+            overflow-wrap: break-word;
+            max-width: 48ch;
+        }
+
+        .hero-title span {
+            color: var(--primary-color);
+        }
+
+        .hero-desc {
+            color: var(--text-light);
+            font-size: clamp(1rem, 2vw, 1.18rem);
+            line-height: 1.75;
+            max-width: 58ch;
+            margin-bottom: 18px;
+        }
+
+        .hero-subtitle {
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .compat-image {
+            border-radius: 28px;
+            overflow: hidden;
+            background: var(--card-color);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 24px 80px var(--shadow);
+            min-height: 280px;
+            transition: var(--transition);
+        }
+
+        .compat-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+            object-fit: cover;
+        }
+
+        .image-fallback {
+            min-height: 320px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .main-container {
+            background: var(--card-color);
+            border-radius: 28px;
+            border: 1px solid var(--border-color);
+            padding: clamp(22px, 4vw, 40px);
+            box-shadow: 0 24px 80px var(--shadow);
+            backdrop-filter: blur(14px);
+            transition: var(--transition);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 14px;
+        }
+
+        .section-copy {
+            color: var(--text-color);
+            line-height: 1.75;
+            margin-bottom: 26px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 0.86fr);
+            gap: 24px;
+            margin-top: 8px;
+        }
+
+        .info-card,
+        .not-compatible-section {
+            border-radius: 24px;
+            padding: clamp(20px, 3vw, 30px);
+            border: 1px solid var(--border-color);
+            background: var(--card-color);
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .not-compatible-section {
+            background: var(--unsupported-bg);
+            border-color: var(--unsupported-border);
+        }
+
+        .card-heading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.18rem;
+            margin-bottom: 14px;
+            color: var(--text-color);
+        }
+
+        .status-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 999px;
+            background: #10B981;
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.12);
+            flex: 0 0 auto;
+        }
+
+        .status-dot.red {
+            background: #f87171;
+            box-shadow: 0 0 0 6px rgba(248, 113, 113, 0.14);
+        }
+
+        .brand-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .cards-panel {
+            background: var(--cards-panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 24px 60px var(--shadow);
+            margin-top: 24px;
+            transition: var(--transition);
+        }
+
+        .brand-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 50px;
+            padding: 12px 18px;
+            border-radius: 16px;
+            background: var(--card-color);
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+            color: var(--text-color);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .brand-pill:hover {
+            transform: translateY(-3px);
+            border-color: rgba(37, 99, 235, 0.4);
+            box-shadow: 0 14px 30px rgba(37, 99, 235, 0.08);
+        }
+
+        .brand-icon {
+            width: 34px;
+            height: 34px;
+            display: inline-grid;
+            place-items: center;
+            font-size: 1.25rem;
+            border-radius: 12px;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .brand-pill.windows .brand-icon {
+            background: #00A4EF;
+        }
+
+        .brand-pill.apple .brand-icon {
+            background: #000000;
+            transition: var(--transition);
+        }
+
+        .dark-mode .brand-pill.apple .brand-icon {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .brand-pill.android .brand-icon {
+            background: #3DDC84;
+        }
+
+        .brand-pill.samsung .brand-icon {
+            background: transparent;
+        }
+
+        .unsupported-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 20px;
+        }
+
+        .unsupported-list span {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: var(--unsupported-bg);
+            color: var(--unsupported-color);
+            font-size: 0.78rem;
+            font-weight: 800;
+            transition: var(--transition);
+        }
+
+        .footer-note {
+            margin-top: 26px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-icons {
+            display: flex;
+            gap: 10px;
+            color: #2563EB;
+            font-weight: 900;
+        }
+
+        @media (max-width: 1280px) {
+            .logo-img {
+                height: 72px;
+                width: 72px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .header-container {
+                padding: 22px 0;
+            }
+
+            .logo-text {
+                font-size: 28px;
+            }
+
+            .logo-img {
+                height: 64px;
+                width: 64px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 16px 0;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .logo-img {
+                height: 56px;
+                width: 56px;
+            }
+        }
+
+        @media (max-width: 840px) {
+            .header-container {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 16px 0;
+            }
+
+            .hero,
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-shell {
+                padding-top: 180px;
+            }
+
+            .compat-image,
+            .compat-image img {
+                min-height: 220px;
+            }
+
+            .footer-note {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-caption {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="../assets/images/logo.png" alt="D'Schurros" class="logo-img">
+                <div class="logo-text">D<span>schurros</span></div>
+            </a>
+            <div class="header-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Alternar modo escuro/claro">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="index.html" class="btn secondary">Voltar ao site</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-shell" id="home">
+        <section class="hero" id="compatibilidade" aria-labelledby="page-title">
+            <div class="hero-copy">
+                <span class="eyebrow">Compatibilidade</span>
+                <h1 class="hero-title" id="page-title">Compatível com tecnologia baseada em Chromium</h1>
+                <p class="hero-desc">Compatível com qualquer navegador Chromium, reconhece o ícone do perfil/site no
+                    cabeçalho e funciona em modo claro ou escuro.</p>
+            </div>
+
+            <div class="compat-image">
+                <img src="../assets/images/compatibilidade.png"
+                    alt="Site DSchurros exibido em celular, tablet, computador e relógios inteligentes"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="image-fallback">Imagem compatibilidade.png não encontrada.</div>
+            </div>
+        </section>
+
+        <section class="main-container" id="suportados" aria-labelledby="supported-title">
+            <h2 class="section-title" id="supported-title">Compatível com navegadores modernos</h2>
+            <p class="section-copy">Funciona com qualquer tecnologia que use Chromium: Chrome, Edge, Opera e Samsung
+                Internet.</p>
+            <p class="section-copy">O layout reconhece o ícone de perfil/site no cabeçalho para identificação visual
+                mais clara.</p>
+            <div class="cards-panel">
+                <div class="content-grid">
+                    <div class="info-card">
+                        <h3 class="card-heading"><span class="status-dot"></span>Compatível com:</h3>
+                        <p class="section-copy">Funciona perfeitamente em celulares, tablets, computadores e também em
+                            <strong>smartwatches</strong> modernos.
+                        </p>
+                        <div class="brand-grid" aria-label="Marcas e sistemas compatíveis">
+                            <div class="brand-pill windows"><span class="brand-icon"><i
+                                        class="fab fa-windows"></i></span>Windows</div>
+                            <div class="brand-pill apple"><span class="brand-icon"><i
+                                        class="fab fa-apple"></i></span>Apple</div>
+                            <div class="brand-pill android"><span class="brand-icon"><i
+                                        class="fab fa-android"></i></span>Android</div>
+                            <div class="brand-pill samsung">
+                                <span class="brand-icon samsung-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 194.65388 196.22363" width="24" height="24" aria-hidden="true" focusable="false">
+                                        <g fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-dashoffset="0" style="mix-blend-mode:normal" transform="matrix(0.60984391,0,0,0.61476934,-49.0356,-12.546528)">
+                                            <path d="m 396.66982,132.41239 c 3.74878,28.30877 2.82192,47.58671 2.82192,47.58671 0,0 0.92686,19.2745 -2.82192,47.57982 -3.93139,29.62842 -14.41969,56.4935 -32.91894,76.16768 l -0.003,0.003 c -19.66729,18.48891 -46.52203,28.9841 -76.16423,32.91549 -28.30877,3.74878 -47.58326,2.82536 -47.58326,2.82536 0,0 -19.27794,0.92341 -47.58326,-2.82536 -29.63876,-3.93139 -56.49694,-14.42658 -76.16423,-32.91549 l -0.003,-0.003 C 97.7532,284.07242 87.26145,257.22457 83.33351,227.57892 79.58129,199.2736 80.50815,180.00599 80.50815,180.00599 c 0,0 -0.92686,-19.28483 2.82536,-47.5936 C 87.26146,102.77708 97.7532,75.91889 116.249,56.2516 h 0.003 c 19.67074,-18.4958 46.52203,-28.9841 76.16423,-32.91894 28.30877,-3.75222 47.58326,-2.82192 47.58326,-2.82192 0,0 19.2745,-0.9303 47.58326,2.82192 29.63876,3.93139 56.49694,14.41969 76.16423,32.91894 h 0.003 c 18.49924,19.66729 28.98755,46.52203 32.91894,76.16079"
+                                                fill="#0066ff"/>
+                                            <path d="m 257.37852,216.22584 c -8.69923,-21.89187 -68.78506,-31.90317 -76.17223,-66.46646 -1.77937,-8.48354 -1.59963,-15.2596 -0.37745,-22.86245 4.4934,-27.53558 29.08133,-37.47501 59.16916,-37.47501 23.95884,0 57.03033,5.75155 57.03033,42.59747 v 11.88057 h -42.18408 c 0,0 0,-7.33323 0,-10.44267 0,-9.23844 -5.84143,-15.34948 -15.72694,-15.34948 -10.58644,0 -14.28903,5.94926 -15.45732,11.34137 -0.39541,1.92317 -0.62909,5.51789 0.17973,8.91491 4.781,19.80692 68.98274,30.37544 76.11828,65.78345 0.70096,3.61271 2.22875,13.17466 0.17973,27.78722 -4.00812,28.18265 -29.20712,38.6433 -59.79822,38.6433 -31.81332,0 -61.50575,-11.37731 -61.50575,-49.08597 l 0.036,-13.10276 h 45.36542 v 16.37398 c 0,9.29236 6.43455,15.36744 17.039,15.36744 11.25149,0 15.06189,-5.73359 16.48181,-11.35932 0.77286,-3.18134 1.27613,-8.4476 -0.37745,-12.5456 z"
+                                                fill="#ffffff"/>
+                                        </g>
+                                    </svg>
+                                </span>Samsung
+                            </div>
+                        </div>
+                    </div>
+                    <div class="not-compatible-section" id="nao-compativel">
+                        <h3 class="card-heading"><span class="status-dot red"></span>Não Compatível</h3>
+                        <p class="section-copy">Smart TVs podem apresentar limitações de navegação e não são totalmente
+                            suportadas.</p>
+                        <div class="unsupported-list" aria-label="Sistemas de TV com suporte limitado">
+                            <span>LG WebOS</span>
+                            <span>Samsung Tizen</span>
+                            <span>Android TV</span>
+                            <span>Apple TV</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-note">
+                <p>Compatível com navegadores modernos: Chrome, Safari e Edge.</p>
+                <div class="footer-icons" aria-label="Site seguro e rápido">
+                    <span><i class="fas fa-shield-halved" style="margin-right: 6px;"></i>Seguro</span>
+                    <span><i class="fas fa-bolt" style="margin-right: 6px;"></i>Rápido</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const bodyEl = document.body;
+        const storedTheme = localStorage.getItem('dschurros-theme');
+        if (storedTheme === 'dark') {
+            bodyEl.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        themeToggle.addEventListener('click', () => {
+            const isDark = bodyEl.classList.toggle('dark-mode');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('dschurros-theme', isDark ? 'dark' : 'light');
+        });
+    </script>
+</body>
+
+</html>

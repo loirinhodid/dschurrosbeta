@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCL6F3M8WD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DCL6F3M8WD');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D'Schurros | Programação de Vendas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+    <style>
+        :root {
+            --primary-color: #D65A19; /* Doce de Leite / Canela Gourmet */
+            --primary-color-rgb: 214, 90, 25;
+            --secondary-color: #E29B3E; /* Churro Dourado */
+            --accent-color: #FCECD6; /* Creme de Baunilha */
+            --light-color: #FFF9F2; /* Fundo de Leite Quente */
+            --dark-color: #381A08; /* Cacau / Chocolate Escuro */
+            --text-color: #2E1505; /* Texto principal em tom chocolate quente */
+            --text-light: #6C5547; /* Subtexto em tom canela suave */
+            --bg-color: #FFFFFF;
+            --bg-color-rgb: 255, 255, 255;
+            --card-color: #FFFFFF;
+            --shadow: rgba(56, 26, 8, 0.06); /* Sombra suave em tom cacau */
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 18px; /* Cantos levemente mais suaves */
+        }
+
+        .dark-mode {
+            --primary-color: #F27B35;
+            --primary-color-rgb: 242, 123, 53;
+            --secondary-color: #FFB74D;
+            --accent-color: #4D260F; /* Chocolate amargo */
+            --light-color: #1F0D04; /* Fundo cacau escuro */
+            --dark-color: #FCECD6;
+            --text-color: #FCECD6;
+            --text-light: #BFA595;
+            --bg-color: #170A03; /* Cacao Gourmet background */
+            --bg-color-rgb: 23, 10, 3;
+            --card-color: #261206; /* Chocolate nos cards */
+            --shadow: rgba(0, 0, 0, 0.45);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* logo image sizing */
+        .logo-img, .footer-logo-img {
+            height: 80px;
+            width: 80px;
+            max-width: 80px;
+            max-height: 80px;
+            display: block;
+            border-radius: 50%;
+            overflow: hidden;
+            object-fit: cover;
+            border: 3px solid rgba(0,0,0,0.06);
+            background-color: #fff;
+        }
+
+        .footer-logo-img {
+            height: 48px;
+            width: 48px;
+            max-width: 48px;
+            max-height: 48px;
+            display: block;
+            border-radius: 50%;
+            overflow: hidden;
+            object-fit: cover;
+            border: 2px solid rgba(0,0,0,0.04);
+            background-color: #fff;
+        }
+
+        @media (max-width: 1280px) {
+            .logo-img { height: 72px; width:72px; }
+            .footer-logo-img { height: 44px; width:44px; }
+        }
+
+        @media (max-width: 1024px) {
+            .logo-img { height: 64px; width:64px; }
+            .footer-logo-img { height: 42px; width:42px; }
+        }
+
+        @media (max-width: 768px) {
+            .logo-img { height: 56px; width:56px; }
+            .footer-logo-img { height: 36px; width:36px; }
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 4px 20px var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+
+        @media (max-width: 1024px) {
+            .header-container { padding: 22px 0; }
+        }
+
+        @media (max-width: 768px) {
+            .header-container { padding: 16px 0; }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-icon {
+            color: var(--primary-color);
+            font-size: 32px;
+            transition: var(--transition);
+            min-width: 40px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            line-height: 1;
+            margin-left: 4px;
+        }
+
+        @media (max-width: 1024px) {
+            .logo-text { font-size: 28px; }
+        }
+
+        @media (max-width: 768px) {
+            .logo-text { font-size: 20px; }
+        }
+
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: var(--text-color);
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            background-color: var(--accent-color);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: rotate(15deg);
+        }
+
+        /* Hero Section para Programação */
+        .hero {
+            padding: 150px 0 40px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, transparent 70%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            flex: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .hero-title span {
+            color: var(--primary-color);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 700px;
+            line-height: 1.8;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Etiqueta de programação */
+        .schedule-tag {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Programação Section - TABELA ESTILIZADA */
+        .schedule {
+            padding: 40px 0 60px;
+            background-color: var(--light-color);
+        }
+
+        .schedule-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .schedule-table {
+            width: 100%;
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 12px 30px var(--shadow);
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        .schedule-header {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .schedule-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .schedule-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .schedule-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .schedule-table th {
+            background-color: rgba(var(--primary-color-rgb), 0.15);
+            color: var(--text-color);
+            font-weight: 600;
+            text-align: center;
+            padding: 20px 15px;
+            border-bottom: 2px solid rgba(var(--primary-color-rgb), 0.3);
+            font-size: 1.1rem;
+        }
+
+        .schedule-table th:nth-child(1) {
+            text-align: left;
+            padding-left: 30px;
+        }
+
+        .schedule-table td {
+            padding: 25px 15px;
+            border-bottom: 1px solid rgba(var(--text-color-rgb), 0.1);
+            color: var(--text-color);
+            vertical-align: top;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .schedule-table tr:hover td {
+            background-color: rgba(var(--primary-color-rgb), 0.05);
+        }
+
+        .day-cell {
+            font-weight: 600;
+            color: var(--primary-color);
+            width: 160px;
+            font-size: 1.1rem;
+            text-align: left;
+            padding-left: 30px !important;
+        }
+
+        .school-cell, .ricci-cell {
+            width: 42%;
+        }
+
+        .school-cell {
+            border-right: 2px dashed rgba(var(--primary-color-rgb), 0.2);
+        }
+
+        .location-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .location-title {
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .location-title i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .location-desc {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+            padding-left: 5px;
+            margin-left: 28px;
+        }
+
+        .no-service {
+            color: var(--text-light);
+            font-style: italic;
+            padding-left: 5px;
+            margin-left: 28px;
+            font-size: 1rem;
+        }
+
+        /* Notas Section */
+        .notes {
+            padding: 60px 0 80px;
+        }
+
+        .notes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .note-card {
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 8px 20px var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            position: relative;
+        }
+
+        .note-card:nth-child(1) { animation-delay: 0.1s; }
+        .note-card:nth-child(2) { animation-delay: 0.2s; }
+        .note-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .note-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .note-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .note-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .note-content {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .note-content strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Etiqueta pequena dentro da nota */
+        .notice-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .notice-badge i {
+            font-size: 0.9rem;
+        }
+
+        /* Footer simplificado */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 50px 0 25px;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .dark-mode footer {
+            background-color: #2D2D2D;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-logo span {
+            color: var(--secondary-color);
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            font-size: 1rem;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            transform: translateY(-5px) rotate(5deg);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .schedule-table {
+                overflow-x: auto;
+                scrollbar-width: thin;
+                scrollbar-color: var(--primary-color) transparent;
+            }
+            
+            .schedule-table::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .schedule-table::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            
+            .schedule-table::-webkit-scrollbar-thumb {
+                background-color: var(--primary-color);
+                border-radius: 6px;
+            }
+            
+            .schedule-table table {
+                min-width: 600px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 130px 0 30px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .schedule, .notes {
+                padding: 40px 0 60px;
+            }
+            
+            .notes-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .header-actions {
+                gap: 10px;
+            }
+            
+            .back-btn span {
+                display: none;
+            }
+            
+            .back-btn {
+                padding: 12px;
+                width: 44px;
+                height: 44px;
+                justify-content: center;
+            }
+            
+            .location-title {
+                font-size: 1rem;
+            }
+            
+            .location-desc {
+                font-size: 0.95rem;
+            }
+            
+            .schedule-tag {
+                font-size: 0.95rem;
+                padding: 8px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.9rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+            
+            .schedule-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            .schedule-table th {
+                padding: 12px 10px;
+                font-size: 0.95rem;
+            }
+            
+            .schedule-table td {
+                padding: 12px 10px;
+                font-size: 0.9rem;
+            }
+            
+            .day-cell {
+                width: 110px;
+                padding-left: 10px !important;
+                font-size: 0.9rem;
+            }
+
+            .location-title {
+                font-size: 0.9rem;
+                gap: 5px;
+            }
+
+            .location-desc {
+                font-size: 0.8rem;
+                margin-left: 15px;
+            }
+
+            .no-service {
+                font-size: 0.8rem;
+                margin-left: 15px;
+            }
+            
+            .notice-badge {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 24px;
+            }
+
+            .logo-icon {
+                font-size: 28px;
+            }
+            
+            .hero-title {
+                font-size: 1.7rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection color */
+        ::selection {
+            background-color: rgba(255, 107, 53, 0.3);
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="../assets/images/logo.png" alt="D'Schurros" class="logo-img">
+                <div class="logo-text">D<span>schurros</span></div>
+            </a>
+
+            <div class="header-actions">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Voltar para Início</span>
+                </a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Alternar modo escuro/claro">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="hero-title">Programação de <span>Vendas</span></h1>
+            <p class="hero-subtitle">Confira onde e quando você pode encontrar nossos churros em Novo Hamburgo - RS.</p>
+            
+            <div class="schedule-tag">Turno da Tarde - Novo Hamburgo – RS</div>
+        </div>
+    </section>
+
+    <!-- Programação Section -->
+    <section class="schedule" id="schedule">
+        <div class="container schedule-container">
+            <div class="section-title">
+                <h2>Agenda Semanal</h2>
+            </div>
+            
+            <div class="schedule-table">
+                <div class="schedule-header">
+                    <h3>Agenda de Vendas – Turno da Tarde</h3>
+                    <p>Novo Hamburgo – RS</p>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dia da Semana</th>
+                            <th class="school-cell">Escola (a partir das 16h)</th>
+                            <th class="ricci-cell">Ricci (a partir das 18h)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="day-cell">Segunda-feira</td>
+                            <td class="school-cell">
+                                <div class="location-container">
+                                    <div>
+                                        <div class="location-title">
+                                            <i class="fas fa-store"></i>
+                                            Supermercado Ricci – Guilherme Grownan
+                                        </div>
+                                        <div class="location-desc">
+                                            Guilherme Grownan
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ricci-cell">
+                                <div class="location-container">
+                                    <div>
+                                        <div class="location-title">
+                                            <i class="fas fa-store"></i>
+                                            Supermercado Ricci – Guilherme Grownan
+                                        </div>
+                                        <div class="location-desc">
+                                            R. Guilherme Grovermann, 515 – Rondônia
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Terça-feira</td>
+                            <td class="school-cell">
+                                <div class="location-container">
+                                    <div>
+                                        <div class="location-title">
+                                            <i class="fas fa-school"></i>
+                                            Escola São Jacó
+                                        </div>
+                                        <div class="location-desc">
+                                            R. Leão XIII, 191 – Hamburgo Velho
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ricci-cell">
+                                <div class="location-container">
+                                    <div>
+                                        <div class="location-title">
+                                            <i class="fas fa-store"></i>
+                                            Supermercado Ricci – Guilherme Grownan
+                                        </div>
+                                        <div class="location-desc">
+                                            R. Guilherme Grovermann, 515 – Rondônia
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Quarta-feira</td>
+                            <td class="school-cell">
+                                <div class="location-container">
+                                    <div>
+                                        <div class="location-title">
+                                            <i class="fas fa-school"></i>
+                                            Não Atendemos
+                                        </div>
+                                        <div class="location-desc">
+                                            Não Atendemos
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ricci-cell">
+                                <div class="location-container">
+                                    <div class="no-service">
+                                         Não Atendemos
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Quinta-feira</td>
+                            <td class="school-cell">
+                                <div class="location-container">
+                                    <div>
+                                        <div class="location-title">
+                                            <i class="fas fa-school"></i>
+                                            Fundação INH
+                                        </div>
+                                        <div class="location-desc">
+                                            R. Frederico Mentz, 526 – Hamburgo Velho
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ricci-cell">
+                                <div class="location-container">
+                                    <div>
+                                        <div class="location-title">
+                                            <i class="fas fa-store"></i>
+                                            Supermercado Ricci – Guilherme Grownan
+                                        </div>
+                                        <div class="location-desc">
+                                            R. Guilherme Grovermann, 515 – Rondônia
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="day-cell">Sexta-feira</td>
+                            <td class="school-cell">
+                                <div class="location-container">
+                                    <div>
+                                        <div class="location-title">
+                                            <i class="fas fa-store"></i>
+                                           Supermercado Ricci – Guilherme Grownan
+                                        </div>
+                                        <div class="location-desc">
+                                            R. Guilherme Grovermann, 515 – Rondônia
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ricci-cell">
+                                <div class="location-container">
+                                    <div>
+                                        <div class="location-title">
+                                            <i class="fas fa-store"></i>
+                                            Supermercado Ricci – Guilherme Grownan
+                                        </div>
+                                        <div class="location-desc">
+                                            R. Guilherme Grovermann, 515 – Rondônia
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notas Section -->
+    <section class="notes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Informações Importantes</h2>
+            </div>
+            
+            <div class="notes-container">
+                <div class="note-card">
+                    <div class="note-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="note-title">Horários</h3>
+                    <p class="note-content">
+                        Atendemos nas escolas a partir das <strong>16h</strong> e no Supermercado Ricci a partir das <strong>18h</strong>. Na quarta-feira atendemos somente nas escolas.
+                    </p>
+                </div>
+                
+                <div class="note-card">
+                    <div class="note-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="note-title">Localizações</h3>
+                    <p class="note-content">
+                        Estamos em diferentes pontos de Novo Hamburgo durante a semana. Consulte a tabela acima para saber onde nos encontrar em cada dia.
+                    </p>
+                </div>
+                
+                <div class="note-card">
+                    <div class="note-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <h3 class="note-title">Atualizações</h3>
+                    <p class="note-content">
+                        Esta página será atualizada quando houver mudanças na programação. Para a versão mais recentes sempre verifique essa pagina através do mural.
+                    </p>
+                    
+                    <div class="notice-badge">
+                        <i class="fas fa-info-circle"></i>
+                        Consulte a página de avisos para atualizações
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer simplificado -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                    <a href="index.html" class="footer-logo"><img src="../assets/images/logo.png" alt="D'Schurros" class="footer-logo-img"></a>
+                
+                <div class="footer-about">
+                    <p>Churros. Encontre-nos em Novo Hamburgo conforme nossa programação semanal.</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/dschurros_?igsh=NnUxOGZ5aGluNzgz" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5551997976539" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:dschurros@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2026 DSchurros. Todos os direitos reservados.</p>
+                    <p style="margin-top: 10px; font-size: 0.85rem;">
+                        <a href="index.html" style="color: rgba(255,255,255,0.7); text-decoration: underline;">Página Inicial</a> | 
+                        <a href="index.html#pricing" style="color: rgba(255,255,255,0.7); text-decoration: underline;">Preços</a> | 
+                        <a href="index.html#announcements" style="color: rgba(255,255,255,0.7); text-decoration: underline;">Avisos</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Corrigir variáveis RGB para transições suaves
+        document.documentElement.style.setProperty('--bg-color-rgb', '255, 255, 255');
+        document.documentElement.style.setProperty('--primary-color-rgb', '214, 90, 25');
+        document.documentElement.style.setProperty('--text-color-rgb', '46, 21, 5');
+        
+        // Toggle do modo escuro
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        const updateThemeVariables = (isDark) => {
+            if (isDark) {
+                document.documentElement.style.setProperty('--bg-color-rgb', '23, 10, 3');
+                document.documentElement.style.setProperty('--primary-color-rgb', '242, 123, 53');
+                document.documentElement.style.setProperty('--text-color-rgb', '252, 238, 214');
+            } else {
+                document.documentElement.style.setProperty('--bg-color-rgb', '255, 255, 255');
+                document.documentElement.style.setProperty('--primary-color-rgb', '214, 90, 25');
+                document.documentElement.style.setProperty('--text-color-rgb', '46, 21, 5');
+            }
+        };
+        
+        themeToggle.addEventListener('click', () => {
+            const isDark = !document.body.classList.contains('dark-mode');
+            document.body.classList.toggle('dark-mode');
+            updateThemeVariables(isDark);
+            
+            if (isDark) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Verificar preferência salva
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            updateThemeVariables(true);
+        }
+        
+        // Animações de entrada para elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos
+        document.querySelectorAll('.schedule-table, .note-card').forEach(item => {
+            observer.observe(item);
+        });
+        
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
